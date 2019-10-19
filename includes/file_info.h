@@ -30,7 +30,7 @@ typedef struct      s_fileinfo
   char              path[1024];
   int				_acl;
   ssize_t			_xattr;
-  struct stat       stat;
+  struct stat       ft_stat;
   enum filetype     type;
 }                   t_fileinfo;
 

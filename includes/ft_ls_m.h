@@ -31,6 +31,8 @@
 
 # include "./flags.h"
 # include "./file_info.h"
+# include "./ls_sort.h"
+
 
 typedef unsigned char	t_1b;
 typedef unsigned short	t_2b;

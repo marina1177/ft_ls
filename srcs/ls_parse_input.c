@@ -4,9 +4,9 @@
 
 #include "../includes/ft_ls_m.h"
 
-t_2b g_aflags[] = {OUT_LCOL, OUT_CBCOL,
-                   OUT_1COL, DIR_ASFI, RECUR_LS,
-                   SORTI_R_, SORTI_T_, SORTI_F_, SORTI_SB,
+t_2b g_aflags[] = {OUT_LCOL, OUT_CBCOL, OUT_1COL,
+                   DIR_ASFI, RECUR_LS,
+                   SORTI_R_, SORTI_T_, SORTI_F_, SORTI_SB, SORTI_A_,
                    SORTI_U_, SORTI_C_};
 char *g_sflags = "lC1dRrtfSauc";
 
@@ -23,7 +23,6 @@ void    parse_ifiles(char *av)
 		return ;
 	}
 	ft_lstadd(&g_args, ft_lstnew(&file, sizeof(t_fileinfo)));
-
 }
 
 static  void    set_flags(char cf, long offset)

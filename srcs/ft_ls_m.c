@@ -9,12 +9,19 @@ int	main(int ac, char **av)
 		get_fileinfo(&file, ".", ".");
 		ft_lstadd(&g_args, ft_lstnew(&file, sizeof(t_fileinfo)));
 	}
+	printf("before:\n");
+	printList(g_args);
+    ls_sort_args();
+	printf("after:\n");
+	printList(g_args);
+   // while (g_args)
+        //grand_loop();
 
         /*DIR				*dir;
     struct dirent	*f_d;
     t_vector		*v;
     t_test			*tst;
-    struct	stat	ft_stat;
+    struct	ft_stat	ft_stat;
 
     int ch;
     t_flgs          flgs;
@@ -27,7 +34,7 @@ int	main(int ac, char **av)
     {
         tst = (t_test *)malloc(sizeof(t_test ));
         printf ("{%s}\n",f_d->d_name);
-        stat(ft_strjoin(argv[1], f_d->d_name), &(tst->ft_stat));//tmp - delete
+        ft_stat(ft_strjoin(argv[1], f_d->d_name), &(tst->ft_stat));//tmp - delete
 
         tst->name = f_d->d_name;
        // printf ("size[%s] = {%lld}\n ", tst->name,tst->ft_stat.st_blocks);

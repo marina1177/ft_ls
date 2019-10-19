@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 00:41:03 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/17 16:56:38 by bcharity         ###   ########.fr       */
+/*   Updated: 2019/10/19 18:03:07 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,35 @@ typedef struct				s_lstat
 ;
 
 /*
+ * * ls_sort_args.c
+ */
+void ls_sort_args();
+void printList(t_list* node);
+/*
  * * ls_sort.c
  */
 //int cmpfun_indx(t_flgs *flgs);
-void	swap(void **a, void **b);
-int		partition (t_vector *v, int low, int high, t_flags *flgs);
-void	quicksort(t_vector *v, int low, int high, t_flags *flgs);
+void				swap(void **a, void **b);
+int					partition (t_vector *v, int low, int high, t_flags *flgs);
+void				quicksort(t_vector *v, int low, int high, t_flags *flgs);
 
+
+/*
+ * * ft_lstsort.c
+ */
+void				merge_sort(t_list **headRef, int (*f)(void *, void *));
+t_list				*SortedMerge(t_list *a, t_list *b, int (*f)(void *, void *));
+void				FrontBackSplit(t_list *source,
+					t_list **frontRef, t_list **backRef);
+
+/*
+ * * ls_cmp.c
+ */
+
+int					ls_isdir(void *a, void *b);
+int					ls_cmp_lex(void *a, void *b);
+int					ls_cmp_atime(void *a, void *b);
+int					ls_cmp_mtime(void *a, void *b);
+int					ls_cmp_size(void *a, void *b);
 
 #endif

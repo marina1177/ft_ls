@@ -37,8 +37,8 @@ typedef struct				s_flags
  ** recur_flgs
  */
 
-# define DIR_ASFI (t_1b)0b010//d
-# define RECUR_LS (t_1b)0b001//R
+# define DIR_ASFI (t_1b)0b10//d
+# define RECUR_LS (t_1b)0b01//R
 
 /*
  ** sort_flgs
@@ -55,6 +55,6 @@ typedef struct				s_flags
  */
 
 # define SORTI_U_ (t_1b)0b10
-# define SORTI_C_ (t_1b)0b10
+# define SORTI_C_ (t_1b)0b01
 
 #endif
