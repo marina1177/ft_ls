@@ -6,7 +6,7 @@
 /*   By: bcharity <bcharity@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 00:41:03 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/19 18:03:07 by bcharity         ###   ########.fr       */
+/*   Updated: 2019/10/20 12:36:22 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,16 @@ void printList(t_list* node);
 /*
  * * ls_sort.c
  */
-//int cmpfun_indx(t_flgs *flgs);
+
 void				swap(void **a, void **b);
-int					partition (t_vector *v, int low, int high, t_flags *flgs);
-void				quicksort(t_vector *v, int low, int high, t_flags *flgs);
+int					partition (t_vector *v, int low, int high, int (*f)(void *, void *));
+void				quicksort(t_vector *v, int low, int high, int (*f)(void *, void *));
 
 
 /*
  * * ft_lstsort.c
  */
+
 void				merge_sort(t_list **headRef, int (*f)(void *, void *));
 t_list				*SortedMerge(t_list *a, t_list *b, int (*f)(void *, void *));
 void				FrontBackSplit(t_list *source,

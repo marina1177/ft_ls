@@ -39,7 +39,7 @@ typedef unsigned short	t_2b;
 typedef unsigned int	t_4b;
 typedef unsigned long	t_8b;
 
-t_list                  *g_args;
+t_list					*g_args;
 t_flags                 g_flags;
 t_vector                *g_files;
 int                     g_file_count;

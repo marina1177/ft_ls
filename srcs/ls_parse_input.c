@@ -23,6 +23,8 @@ void    parse_ifiles(char *av)
 		return ;
 	}
 	ft_lstadd(&g_args, ft_lstnew(&file, sizeof(t_fileinfo)));
+//	printf("\nlstadd_\n");printList(g_args);
+	//ft_vecadd(g_args, &file);
 }
 
 static  void    set_flags(char cf, long offset)
@@ -65,7 +67,7 @@ int parse_input(int ac, char **av)
 	char    **argv;
 	int     argc;
 	int     fcnt;
-	t_list  *tmp;
+
 
 	g_flags.exist = 0;
     if (ac == 1)

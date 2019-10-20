@@ -1,19 +1,36 @@
 #include "../includes/ft_ls_m.h"
 
-int	main(int ac, char **av)
+int	ma(int ac, char **av)
 {
 	t_fileinfo  file;
 	//init_ls();//clean structs
+
 	if((g_file_count = parse_input(ac, av)) == 0)
 	{
 		get_fileinfo(&file, ".", ".");
 		ft_lstadd(&g_args, ft_lstnew(&file, sizeof(t_fileinfo)));
+		//ft_vecadd(g_args, &file);
 	}
 	printf("before:\n");
 	printList(g_args);
-    ls_sort_args();
-	printf("after:\n");
+	ls_sort_args();
+	printf("\nafter:\n");
 	printList(g_args);
+
+
+	/*	printf("before_sort:\n");
+	for (int i = 0; i < g_args->count; i++)
+	{
+		printf("data[%d] = %s\n", i, ((t_fileinfo*)(g_args->data)[i])->name);
+	}
+	ls_sort_args();
+	printf("ater_sort:\n");
+	for (int i = 0; i < g_args->count; i++)
+	{
+		printf("data[%d] = %s\n", i, ((t_fileinfo*)(g_args->data)[i])->name);
+	}*/
+
+
    // while (g_args)
         //grand_loop();
 

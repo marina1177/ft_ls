@@ -6,18 +6,15 @@
 
 t_list  *SortedMerge(t_list *a, t_list *b, int (*f)(void *, void *))
 {
-	int 	rev;
     t_list	*result;
+	int rev;
 
 	result = NULL;
     if (a == NULL)
         return (b);
     else if (b == NULL)
         return (a);
-	rev = f(a, b);
-    if ((g_flags.f_sort_ & SORTI_R_))
-    	rev *= -1;
-    if (rev <= 0)
+    if ((rev = f(a->content, b->content)) <= 0)
     {
         result = a;
         result->next = SortedMerge(a->next, b,f);
@@ -68,3 +65,5 @@ void    merge_sort(t_list **headRef, int (*f)(void *, void *))
     merge_sort(&b,f);
     *headRef = SortedMerge(a, b, f);
 }
+
+
