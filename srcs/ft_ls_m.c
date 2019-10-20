@@ -1,6 +1,6 @@
 #include "../includes/ft_ls_m.h"
 
-int	ma(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_fileinfo  file;
 	//init_ls();//clean structs
@@ -8,7 +8,7 @@ int	ma(int ac, char **av)
 	if((g_file_count = parse_input(ac, av)) == 0)
 	{
 		get_fileinfo(&file, ".", ".");
-		ft_lstadd(&g_args, ft_lstnew(&file, sizeof(t_fileinfo)));
+		ft_mlstpush(&g_args, ft_mlstnew(&file, sizeof(t_fileinfo)));
 		//ft_vecadd(g_args, &file);
 	}
 	printf("before:\n");

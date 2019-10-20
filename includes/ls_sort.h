@@ -55,7 +55,7 @@ typedef struct				s_lstat
  * * ls_sort_args.c
  */
 void ls_sort_args();
-void printList(t_list* node);
+
 /*
  * * ls_sort.c
  */

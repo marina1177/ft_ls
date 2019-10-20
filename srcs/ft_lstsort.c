@@ -14,7 +14,7 @@ t_list  *SortedMerge(t_list *a, t_list *b, int (*f)(void *, void *))
         return (b);
     else if (b == NULL)
         return (a);
-    if ((rev = f(a->content, b->content)) <= 0)
+    if ((rev = f(a->content, b->content)) >= 0)
     {
         result = a;
         result->next = SortedMerge(a->next, b,f);

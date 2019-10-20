@@ -22,7 +22,7 @@ void    parse_ifiles(char *av)
 		ls_file_error(av);
 		return ;
 	}
-	ft_lstadd(&g_args, ft_lstnew(&file, sizeof(t_fileinfo)));
+	ft_mlstpush(&g_args, ft_mlstnew(&file, sizeof(t_fileinfo)));
 //	printf("\nlstadd_\n");printList(g_args);
 	//ft_vecadd(g_args, &file);
 }

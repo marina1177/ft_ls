@@ -19,8 +19,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <sys/xattr.h>
-# include <uuid/uuid.h>
-#include <sys/acl.h>
+//# include <uuid/uuid.h>
+//# include <sys/acl.h>
 
 # include <errno.h>
 # include <sys/ioctl.h>
@@ -32,18 +32,19 @@
 # include "./flags.h"
 # include "./file_info.h"
 # include "./ls_sort.h"
-
+# include "../ft_mlst/ft_mlst.h"
 
 typedef unsigned char	t_1b;
 typedef unsigned short	t_2b;
 typedef unsigned int	t_4b;
 typedef unsigned long	t_8b;
 
-t_list					*g_args;
+t_mlist					*g_args;
+t_mlist					*g_argsf;
 t_flags                 g_flags;
-t_vector                *g_files;
+t_mlist                 *g_files;
 int                     g_file_count;
 
 int                     parse_input(int ac, char **av);
-
+void printList(t_mlist* node);
 #endif
