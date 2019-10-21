@@ -94,3 +94,9 @@ cmake-build-debug/Makefile
 cmake-build-debug/cmake_install.cmake
 cmake-build-debug/git_ls
 cmake-build-debug/git_ls.cbp
+
+
+#vscode
+.vscode
+
+ft_ls
