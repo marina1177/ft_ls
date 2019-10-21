@@ -27,12 +27,12 @@
 # include <time.h>
 # include <limits.h>
 
-# include "../libft/libft.h"
+# include "libft.h"
+# include "ft_printf.h"
 
-# include "./flags.h"
-# include "./file_info.h"
-# include "./ls_sort.h"
-# include "../ft_mlst/ft_mlst.h"
+# include "flags.h"
+# include "file_info.h"
+# include "ls_sort.h"
 
 typedef unsigned char	t_1b;
 typedef unsigned short	t_2b;
