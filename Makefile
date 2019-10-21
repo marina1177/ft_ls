@@ -6,7 +6,7 @@
 #    By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/24 19:46:53 by wzei              #+#    #+#              #
-#    Updated: 2019/10/21 13:53:40 by wzei             ###   ########.fr        #
+#    Updated: 2019/10/21 16:41:54 by wzei             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ FT_LS_M_SRC =   file_info.c \
 				ls_error.c \
 				ls_parse_input.c \
 				ls_sort.c \
-				ls_sort_args.c
+				ls_sort_args.c \
+				trav_dirs.c \
+				traverce_cur_dir.c
 
 DIR_S = srcs
 DIR_H = includes

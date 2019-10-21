@@ -1,7 +1,7 @@
 //
 // Created by AN515-52-51JP on 16.10.2019.
 //
-#include "../includes/ft_ls_m.h"
+#include "ft_ls_m.h"
 
 static enum filetype get_filetype(mode_t m)
 {
@@ -32,7 +32,7 @@ static enum filetype get_filetype(mode_t m)
 
 int     get_fileinfo(t_fileinfo *file, char *path, char *name)
 {
-//	acl_t   acl;
+	acl_t   acl;
 	char    *filename;
 
 	if (ft_strcmp(path,name) != 0)
@@ -41,7 +41,7 @@ int     get_fileinfo(t_fileinfo *file, char *path, char *name)
 		filename = path;
 	if (lstat(filename, &(file->ft_stat)) == -1)
 		return (-1);
-/*	acl = acl_get_link_np(filename, ACL_TYPE_EXTENDED);
+	acl = acl_get_link_np(filename, ACL_TYPE_EXTENDED);
 	file->_xattr = listxattr(filename, NULL, 0, XATTR_NOFOLLOW);
 	if (acl == NULL)
 		file->_acl = 0;
@@ -49,10 +49,10 @@ int     get_fileinfo(t_fileinfo *file, char *path, char *name)
 	{
 		file->_acl = 1;
 		acl_free(acl);
-	}*/
+	}
 	file->type = get_filetype(file->ft_stat.st_mode);
 	ft_strcpy(file->name, name);
-	ft_strcpy(file->path,path);
+	ft_strcpy(file->path, path);
 	return (0);
 	/*if (xattr < 0)
 		xattr = 0;

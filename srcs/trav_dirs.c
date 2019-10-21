@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_zero_p.c                                     :+:      :+:    :+:   */
+/*   trav_dirs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 07:03:49 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/21 15:43:48 by wzei             ###   ########.fr       */
+/*   Created: 2019/10/21 16:33:39 by wzei              #+#    #+#             */
+/*   Updated: 2019/10/21 16:40:13 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_ls_m.h"
 
-void	check_zero_p(const char **format, t_pf *data)
+void    trav_dirs(t_mlist *dirs)
 {
-	char	*stop;
-	int		p;
-	int		off;
-
-	off = 1;
-	if ((*format)[off] == '0')
-		off++;
-	if ((*format)[off] == '-')
-		off++;
-	p = (int)ft_strtol(*format + off, &stop, 10);
-	if (stop - (*format + off) == 0)
-		p = 0;
-	else
-		data->flags |= F_NULL;
-	data->precision = p;
-	*format = stop - 1;
+    while (dirs != NULL)
+    {
+        traverce_cur_dir(((t_fileinfo *)(dirs->content))->name);
+        dirs = dirs->next;
+    }
 }

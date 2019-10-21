@@ -2,7 +2,7 @@
 // Created by Buster Charity on 19/10/2019.
 //
 
-#include "../includes/ft_ls_m.h"
+#include "ft_ls_m.h"
 
 t_list  *SortedMerge(t_list *a, t_list *b, int (*f)(void *, void *))
 {

@@ -19,8 +19,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <sys/xattr.h>
-//# include <uuid/uuid.h>
-//# include <sys/acl.h>
+# include <uuid/uuid.h>
+# include <sys/acl.h>
 
 # include <errno.h>
 # include <sys/ioctl.h>
@@ -39,12 +39,26 @@ typedef unsigned short	t_2b;
 typedef unsigned int	t_4b;
 typedef unsigned long	t_8b;
 
-t_mlist					*g_args;
-t_mlist					*g_argsf;
-t_flags                 g_flags;
-t_mlist                 *g_files;
-int                     g_file_count;
+t_mlist					*g_files;
+t_mlist					*g_dirs;
+t_mlist					*g_err_f;
+t_flags					g_flags;
+t_mlist					*g_files;
+int						g_file_count;
 
-int                     parse_input(int ac, char **av);
-void printList(t_mlist* node);
+int						parse_input(int ac, char **av);
+void					printList(t_mlist* node);
+
+/*
+** Error handling
+*/
+
+void					ls_file_error(char *av);
+void					print_err(t_mlist *lst);
+
+/*
+** Directory traverce
+*/
+void					traverce_cur_dir(char *dir_name);
+void					trav_dirs(t_mlist *dirs);
 #endif
