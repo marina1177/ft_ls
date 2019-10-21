@@ -126,7 +126,9 @@ static void	handle_dirs(char *dir_name, t_mlist *entries)
 		len = ft_strlen(dir_name) + ft_strlen(file_name) + 2;
 		dir_name_slash = ft_strjoin(dir_name, "/");
 		get_fileinfo(&file, dir_name, file_name);
-		if (file.type == directory)
+		if (file.type == directory &&
+				ft_strncmp(".", file_name, 1) &&
+				ft_strncmp("..", file_name, 2))
 			traverce_subdir(len, dir_name, file_name);
 		//ft_printf("%s\n", file_name);	
 		entries = entries->next;
