@@ -41,8 +41,6 @@ void ls_sort_args_file(t_mlist *files)
 		ft_mlst_revsort(&files, &ls_cmp_mtime);
 	else if (g_flags.f_sort_t & SORTI_U_)
 		ft_mlst_sort(&files, &ls_cmp_atime);
-
-	ft_mlst_sort(&files, &ls_isdir);
 }
 
 /*void ls_sort_args()

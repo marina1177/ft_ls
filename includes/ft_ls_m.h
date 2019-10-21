@@ -61,4 +61,6 @@ void					print_err(t_mlist *lst);
 */
 void					traverce_cur_dir(char *dir_name);
 void					trav_dirs(t_mlist *dirs);
+void					get_dir_entries(DIR *dir, char *dir_name,
+										t_mlist **entries);
 #endif

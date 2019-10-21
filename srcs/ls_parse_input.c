@@ -2,7 +2,7 @@
 // Created by AN515-52-51JP on 16.10.2019.
 //
 
-#include "../includes/ft_ls_m.h"
+#include "ft_ls_m.h"
 
 t_2b g_aflags[] = {OUT_LCOL, OUT_CBCOL, OUT_1COL,
                    DIR_ASFI, RECUR_LS,

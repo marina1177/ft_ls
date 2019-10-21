@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 00:41:03 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/21 17:15:44 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/21 19:56:10 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void				quicksort(t_vector *v, int low, int high, int (*f)(void *, void *));
  */
 
 void				merge_sort(t_list **headRef, int (*f)(void *, void *));
-t_list				*SortedMerge(t_list *a, t_list *b, int (*f)(void *, void *));
-void				FrontBackSplit(t_list *source,
+t_list				*sorted_merge(t_list *a, t_list *b, int (*f)(void *, void *));
+void				front_back_split(t_list *source,
 					t_list **frontRef, t_list **backRef);
 
 /*
