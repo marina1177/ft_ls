@@ -19,12 +19,15 @@ void    parse_ifiles(char *av)
 	status = get_fileinfo(&file, av, av);
 	if (status < 0)
 	{
-		ls_file_error(av);
-		return ;
+		ft_strncpy(file.name, av, sizeof(file.name));
+		ft_mlstpush(&g_err_f, ft_mlstnew(&file, sizeof(t_fileinfo)));
 	}
-	ft_mlstpush(&g_args, ft_mlstnew(&file, sizeof(t_fileinfo)));
-//	printf("\nlstadd_\n");printList(g_args);
-	//ft_vecadd(g_args, &file);
+	else if ((file.type == directory) && !(g_flags.f_recur & DIR_ASFI))
+	{
+		ft_mlstpush(&g_dirs, ft_mlstnew(&file, sizeof(t_fileinfo)));
+	}
+	else
+		ft_mlstpush(&g_files, ft_mlstnew(&file, sizeof(t_fileinfo)));
 }
 
 static  void    set_flags(char cf, long offset)
