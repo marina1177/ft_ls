@@ -3,91 +3,111 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bcharity <bcharity@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/03 17:34:38 by rfrieda           #+#    #+#             */
-/*   Updated: 2019/10/11 06:49:07 by wzei             ###   ########.fr       */
+/*   Created: 2019/07/03 18:53:04 by cdemetra          #+#    #+#             */
+/*   Updated: 2019/09/29 13:56:35 by bcharity         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-static int	handle_percent(t_pf *data, int w)
+void	ft_how_to_print2(t_qualfrs *ql)
 {
-	if (data->width != 0)
+	if (ql->typs == TYPES[3] || ql->typs == TYPES[4])
+		ft_print_di(ql);
+	else if (ql->typs == TYPES[5] || ql->typs == TYPES[8]
+	|| ql->typs == TYPES[7])
+		ft_print_ox(ql);
+	else if (ql->typs == TYPES[6])
+		ft_print_u(ql);
+	else if (ql->typs == TYPES[12])
+		ft_color(ql);
+	else if (ql->typs == TYPES[11] || ql->typs == TYPES[16] ||
+	ql->typs == TYPES[10] || ql->typs == TYPES[9] ||
+	ql->typs == TYPES[17] || ql->typs == TYPES[18])
+		ft_print_floats(ql);
+	else if (ql->typs == TYPES[15])
+		ft_print_b(ql);
+	return ;
+}
+
+void	ft_how_to_print(t_qualfrs *ql)
+{
+	if (ql->typs == 0 && (ql->width > 0 || ql->prcs >= 0 || ql->flg->space))
+		ft_without_typs(ql);
+	else if (ql->typs == TYPES[13])
+		ft_print_percent(ql);
+	else if (ql->typs == TYPES[0] || ql->typs == TYPES[1]
+	|| ql->typs == TYPES[2] || ql->typs == TYPES[14])
 	{
-		if (data->flags & F_MINUS)
-			w += ft_print_out("%", 1);
-		while (data->width != 1)
-		{
-			w += ft_print_out(" ", 1);
-			data->width--;
-		}
-		if (data->flags & ~F_MINUS || data->flags == 0)
-			w += ft_print_out("%", 1);
+		if (ql->typs == TYPES[0])
+			ft_print_char(ql);
+		else if (ql->typs == TYPES[1] || ql->typs == TYPES[14])
+			ft_print_str(ql);
+		else if (ql->typs == TYPES[2])
+			ft_print_pointer(ql);
 	}
-	else
-		w += ft_print_out("%", 1);
-	data->written += w;
-	return (data->written);
+	ft_how_to_print2(ql);
+	return ;
 }
 
-static int	ft_arg(va_list *ap, t_pf *data)
+void	ft_create_and_free(t_qualfrs *ql, int f)
 {
-	int w;
-
-	w = 0;
-	if (data->spec == 'd' || data->spec == 'i' || data->spec == 'u')
-		return (ft_diu(ap, data));
-	if (data->spec == 'o' || data->spec == 'x' || data->spec == 'X' ||
-		data->spec == 'p')
-		return (ft_oxp(ap, data));
-	if (data->spec == 'c' || data->spec == 's' || data->spec == 'S')
-		return (ft_cs(ap, data));
-	if (data->spec == '%')
-		return (handle_percent(data, w));
-	if (data->spec == 'f' || data->spec == 'F')
-		return (ft_f(ap, data));
-	return (0);
-}
-
-static void	ft_printf_internal(const char *format, va_list *ap, t_pf *data)
-{
-	int	n;
-
-	while (data->spec != END_OF_FORMAT && *format)
+	if (f == 1)
 	{
-		n = 0;
-		while (format[n] && format[n] != '%')
-			n++;
-		if ((n = ft_print_out(format, n)) < 0)
-		{
-			data->written = -1;
-			return ;
-		}
-		data->written += n;
-		format += n;
-		if (*format == '%')
-		{
-			format = ft_format(format + 1, data);
-			if ((n = ft_arg(ap, data)) < 0)
-			{
-				data->written = -1;
-				return ;
-			}
-		}
+		ql->len = (t_length*)malloc(sizeof(t_length));
+		ql->flg = (t_flag*)malloc(sizeof(t_flag));
+		ft_zero_struct(ql);
 	}
-	ft_print_out(NULL, 0);
+	else if (f == 2)
+	{
+		free(ql->flg);
+		free(ql->len);
+	}
 }
 
-int			ft_printf(const char *format, ...)
+void	ft_search_syntax(char *format, t_qualfrs *qual)
 {
-	t_pf	data;
-	va_list ap;
+	char				*ser;
+	size_t				i;
+	size_t				fls;
 
-	va_start(ap, format);
-	data.written = 0;
-	ft_printf_internal(format, &ap, &data);
-	va_end(ap);
-	return (data.written);
+	i = 0;
+	fls = 0;
+	ser = NULL;
+	while (!ser && i >= fls && format[i])
+	{
+		i += ft_flags(&(format)[i], qual);
+		i += ft_width(&(format)[i], qual);
+		i += ft_precision(&(format)[i], qual);
+		i += ft_length(&(format)[i], qual);
+		i += ft_zd(&(format)[i], qual);
+		if ((ser = ft_types(&(format)[i], qual)))
+			i++;
+		else
+			fls++;
+	}
+	qual->sformat = &(format)[i];
+}
+
+int		ft_printf(const char *format, ...)
+{
+	t_qualfrs	qual;
+
+	qual.countchr = 0;
+	ft_create_and_free(&qual, 1);
+	qual.sformat = (char*)format;
+	va_start(qual.ap, format);
+	while (qual.sformat != NULL && *(qual.sformat))
+	{
+		if (!(qual.sformat = ft_print_format(qual.sformat, &qual)))
+			continue ;
+		ft_search_syntax(qual.sformat, &qual);
+		ft_how_to_print(&qual);
+		ft_zero_struct(&qual);
+	}
+	ft_create_and_free(&qual, 2);
+	va_end(qual.ap);
+	return (qual.countchr);
 }

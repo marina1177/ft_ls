@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_zero.c                                          :+:      :+:    :+:   */
+/*   init_max.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/11 07:16:33 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/11 07:16:49 by wzei             ###   ########.fr       */
+/*   Created: 2019/10/22 03:22:27 by wzei              #+#    #+#             */
+/*   Updated: 2019/10/22 14:24:31 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_ls_m.h"
 
-int	is_zero(t_pf *data, char *numarr, int i)
+void    init_max(t_max_out *max)
 {
-	if (data->spec == 'p')
-		return (0);
-	if (i == 63 && numarr[0] == '0')
-		return (1);
-	return (0);
+    max->lnk = 0;
+    max->name = 0;
+    max->size = 0;
+    max->minor = 0;
+    max->major = 0;
+    max->user = 0;
+    max->group = 0;
+    max->blk = 0;
 }

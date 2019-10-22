@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 14:22:18 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/21 19:33:08 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/22 14:17:06 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,21 @@ const char	*g_program_name = "ft_ls";
 	lst->tag = 0;
 }*/
 
-static void	print_head(const char *filename)
+static void	print_head(const char *filename, t_max_out *max)
 {
-	ft_printf("\n%s:\n", filename);
+	static int count = 0;
+	
+	if (!g_print_header)
+	{
+		count++;
+		g_print_header = 1;
+		ft_printf("total %llu\n", max->blk);
+		return ;
+	}
+	if (count++)
+		ft_printf("\n");
+	ft_printf("%s:\n", filename);
+	ft_printf("total: %llu\n", max->blk);
 }
 /*
 **static void	get_dir_entries(DIR *dir, char *dir_name, t_mlist **entries)
@@ -51,26 +63,6 @@ static void	print_head(const char *filename)
 **	ft_strdel(&dir_name_slash);
 **}
 */
-static void	print_dir_entries(t_mlist *entries)
-{
-	/*struct dirent *d_d;
-
-	d_d = NULL;
-	ft_printf("%s\n", f_d->d_name);
-	dir->__dd_loc = *((long *)ft_vecgetfirst(entries));
-	dir->__dd_size = *((long *)ft_vecgetlast(entries));
-	while ((d_d = readdir(dir)))
-	{
-		ft_printf("%s\n", d_d->d_name);
-	}
-	dir->__dd_loc = *((long *)ft_vecgetfirst(entries));
-	dir->__dd_size = *((long *)ft_vecgetlast(entries));*/
-	while (entries != NULL)
-	{
-		ft_printf("%s\n", ((t_fileinfo *)(entries->content))->name);
-		entries = entries->next;
-	}
-}
 
 static void traverce_subdir(size_t len, char *dir_name,
 							char *file_name)
@@ -100,7 +92,7 @@ static void	handle_dirs(char *dir_name, t_mlist *entries)
 		file_name = ((t_fileinfo *)(entries->content))->name;
 		len = ft_strlen(dir_name) + ft_strlen(file_name) + 2;
 		dir_name_slash = ft_strjoin(dir_name, "/");
-		get_fileinfo(&file, dir_name, file_name);
+		get_fileinfo(&file, dir_name_slash, file_name);
 		if (file.type == directory &&
 				ft_strncmp(".", file_name, 1) &&
 				ft_strncmp("..", file_name, 2))
@@ -126,28 +118,22 @@ static void	err_msg(char *dir_name)
 
 void		traverce_cur_dir(char *dir_name)
 {
-	DIR *dir;
-
-	//t_vector		*entries;
-
-	struct dirent	*f_d;
-	//struct stat *stat = NULL;
+	DIR				*dir;
 	t_mlist			*list_files;
-	//entries = ft_vecnew();
+	t_max_out		max;
 
-	//list_files = ft_mlstnew();
-	list_files = NULL;
 	dir = opendir(dir_name);
+	list_files = NULL;
+	init_max(&max);
 	if (!dir)
 	{
 		err_msg(dir_name);
 		return ;
 	}
-	//stat(d_d->d_name, &f_st);
-	print_head(dir_name);
-	get_dir_entries(dir, dir_name, &list_files);
+	get_dir_entries(dir, dir_name, &list_files, &max);
 	ls_sort_args_file(list_files);
-	print_dir_entries(list_files);
+	print_head(dir_name, &max);
+	print_list(list_files, &max, dir_name);
 	if (g_flags.f_recur == 1)
 	{
 		handle_dirs(dir_name, list_files);

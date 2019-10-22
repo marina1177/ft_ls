@@ -6,39 +6,39 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 19:49:01 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/21 19:50:38 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/22 12:23:44 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls_m.h"
 
-static void	use_default_file(void)
+static void	use_default_files(t_mlist **files)
 {
 	t_fileinfo	file;
-	DIR			*dir;
 
 	if (!(g_flags.f_recur & DIR_ASFI))
 	{
-		dir = opendir(".");
-		get_dir_entries(dir, ".", &g_files);
-		closedir(dir);
+		traverce_cur_dir(".");
 	}
 	else
 	{
 		get_fileinfo(&file, ".", ".");
-		ft_mlstpush(&g_files, ft_mlstnew(&file, sizeof(t_fileinfo)));
+		ft_mlstpush(files, ft_mlstnew(&file, sizeof(t_fileinfo)));
 	}
 }
 
 int			main(int ac, char **av)
 {
+	t_max_out max;
+
+	init_max(&max);
 	if ((g_file_count = parse_input(ac, av)) == 0)
-		use_default_file();
+		use_default_files(&g_files);
 	ls_sort_args_file(g_files);
 	ft_mlst_sort(&g_err_f, &ls_cmp_lex);
 	ls_sort_args_file(g_dirs);
 	print_err(g_err_f);
-	printList(g_files);
+	print_list(g_files, &max, ".");
 	trav_dirs(g_dirs);
 	return (0);
 }

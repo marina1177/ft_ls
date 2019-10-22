@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_spaces.c                                  :+:      :+:    :+:   */
+/*   print_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/08 06:34:37 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/08 06:38:42 by wzei             ###   ########.fr       */
+/*   Created: 2019/10/22 00:50:50 by wzei              #+#    #+#             */
+/*   Updated: 2019/10/22 12:38:39 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_ls_m.h"
 
-int	ft_print_spaces(int len)
+void	print_list(t_mlist* node, t_max_out *max, char *dir_name)
 {
-	int w;
-
-	w = 0;
-	while (len-- > 0)
-		w += ft_print_out(" ", 1);
-	return (w);
+	while (node != NULL)
+	{
+		if (g_flags.f_output1 & OUT_LCOL)
+			print_long_entry((t_fileinfo *)(node->content), max, dir_name);
+		else
+			ft_printf("%s\n", ((t_fileinfo *)(node->content))->name);
+		node = node->next;
+	}
 }

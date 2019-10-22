@@ -26,7 +26,7 @@ typedef unsigned char	t_1b;
 typedef struct      s_fileinfo
 {
   char              name[256];
-  char              *linkname[256];
+  char              linkname[256];
   char              path[1024];
   int				_acl;
   ssize_t			_xattr;
@@ -34,6 +34,20 @@ typedef struct      s_fileinfo
   enum filetype     type;
 }                   t_fileinfo;
 
-int                 get_fileinfo(t_fileinfo *file, char *path, char *name);
+typedef struct      s_max_out
+{
+	unsigned long			lnk;
+	unsigned long			size;
+	unsigned long			major;	
+	unsigned long			minor;
+	unsigned long			name;
+	unsigned long			user;
+	unsigned long			group;
+	unsigned long			blk;
+}                   t_max_out;
+
+int					get_fileinfo(t_fileinfo *file, char *path, char *name);
+void				udate_max(t_fileinfo *file, t_max_out *max);
+void				init_max(t_max_out *max);
 
 #endif //LS_SORT_FILE_INFO_H

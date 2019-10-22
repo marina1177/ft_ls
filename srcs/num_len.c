@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_round.c                                   :+:      :+:    :+:   */
+/*   num_len.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/07 07:28:30 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/07 07:53:24 by wzei             ###   ########.fr       */
+/*   Created: 2019/10/22 15:05:52 by wzei              #+#    #+#             */
+/*   Updated: 2019/10/22 15:07:08 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_ls_m.h"
 
-int	ft_print_round(t_print_buf *buf)
+unsigned long num_len(unsigned long num)
 {
-	size_t	i;
+    unsigned long  mul;
+    unsigned long  len;
 
-	i = buf->pos - 1;
-	if (buf->buf[i] == ':')
-	{
-		buf->buf[i--] = '0';
-		while (1)
-		{
-			if (buf->buf[i] == '.')
-				i--;
-			if (buf->buf[i] == '9')
-			{
-				buf->buf[i--] = '0';
-				continue ;
-			}
-			else
-			{
-				buf->buf[i]++;
-				break ;
-			}
-		}
-	}
-	return (0);
+    mul = 10;
+    len = 1;
+    while (num > mul)
+    {
+        len++;
+        mul *= 10;
+    }
+    return (len);
 }
