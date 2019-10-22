@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 18:46:11 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/21 17:21:22 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/22 20:10:02 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,27 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef struct	s_list
+typedef struct		s_list
 {
 	void			*content;
 	size_t			content_size;
 	struct s_list	*next;
-}				t_list;
+}					t_list;
 
-typedef struct	s_vector
+typedef struct		s_vector
 {
-	void	**data;
-	int		size;
-	int		count;
-}				t_vector;
+	void			**data;
+	int				size;
+	int				count;
+}					t_vector;
 
-typedef struct	s_mlist
+typedef struct		s_mlist
 {
 	void			**content;
-	size_t          tag;
+	size_t			tag;
 	struct s_mlist	*prev;
 	struct s_mlist	*next;
-}				t_mlist;
+}					t_mlist;
 
 # define BUFF_SIZE 32
 # define FT_ERRORINDICATOR 1
@@ -45,7 +45,7 @@ typedef struct	s_mlist
 # define FT_EOF -1
 # define COND_STR_TERM(CND, STR, POS) if ((CND)) {STR[POS] = '\0'; break ;}
 
-typedef struct	s_file
+typedef struct		s_file
 {
 	int				fd;
 	int				flags;
@@ -53,7 +53,7 @@ typedef struct	s_file
 	size_t			b_off;
 	size_t			b_len;
 	char			buf[BUFF_SIZE + 1];
-}				t_file;
+}					t_file;
 
 int				ft_atoi(const char *str);
 void			ft_bzero(void *s, size_t n);
