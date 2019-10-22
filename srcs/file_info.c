@@ -12,7 +12,7 @@
 
 #include "ft_ls_m.h"
 
-static enum filetype get_filetype(mode_t m)
+static enum filetype	get_filetype(mode_t m)
 {
 	m &= S_IFMT;
 	if (m == S_IFIFO)
@@ -37,20 +37,25 @@ static enum filetype get_filetype(mode_t m)
 	return (unknown);
 }
 
-int	get_fileinfo(t_fileinfo *file, char *path, char *name)
+static void				init_str(char *path, char *name, char **acc, char **filename)
+{
+	if (ft_strcmp(path, name) != 0)
+	{
+		*acc = ft_strjoin(path, name);
+		*filename = *acc;
+	}
+	else
+		*filename = *path;
+}
+
+int						get_fileinfo(t_fileinfo *file, char *path, char *name)
 {
 	acl_t   acl;
 	char	*filename;
 	char	*acc;
 
 	acc = NULL;
-	if (ft_strcmp(path, name) != 0)
-	{
-		acc = ft_strjoin(path, name);
-		filename = acc;
-	}
-	else
-		filename = path;
+	init_str(path, name, &acc, &filename);
 	if (lstat(filename, &(file->ft_stat)) == -1)
 		return (-1);
 	acl = acl_get_link_np(filename, ACL_TYPE_EXTENDED);

@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 19:44:45 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/22 19:44:45 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/22 19:47:47 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ void ls_sort_args_file(t_mlist *files);
  * * ls_sort.c
  */
 
-void				swap(void **a, void **b);
-int					partition (t_vector *v, int low, int high, int (*f)(void *, void *));
 void				quicksort(t_vector *v, int low, int high, int (*f)(void *, void *));
 
 
