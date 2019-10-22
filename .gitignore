@@ -53,7 +53,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-libft
 README.md
 .DS_Store
 .idea/.gitignore
@@ -100,3 +99,6 @@ cmake-build-debug/git_ls.cbp
 .vscode
 
 ft_ls
+
+test
+__ft_printf

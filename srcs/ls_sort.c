@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 13:37:39 by bcharity          #+#    #+#             */
-/*   Updated: 2019/10/21 14:18:11 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/22 00:58:12 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	swap(void **a, void **b)
 }
 
 
-int partition (t_vector *v, int low, int high, int (*f)(void *, void *))
+int partition(t_vector *v, int low, int high, int (*f)(void *, void *))
 {
 	t_fileinfo	*pivot;
-	int		i;
+	int			i;
 	t_fileinfo	*tmp;
 
 	pivot = (t_fileinfo*)v->data[high];

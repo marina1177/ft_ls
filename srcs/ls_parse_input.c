@@ -2,7 +2,7 @@
 // Created by AN515-52-51JP on 16.10.2019.
 //
 
-#include "../includes/ft_ls_m.h"
+#include "ft_ls_m.h"
 
 t_2b g_aflags[] = {OUT_LCOL, OUT_CBCOL, OUT_1COL,
                    DIR_ASFI, RECUR_LS,
@@ -13,7 +13,7 @@ char *g_sflags = "lC1dRrtfSauc";
 void    parse_ifiles(char *av)
 {
 	int         status;
-	int         i;
+	//int         i;
 	t_fileinfo  file;
 
 	status = get_fileinfo(&file, av, av);
@@ -60,7 +60,7 @@ static void    parse_flags(char *s_avflgs)
 			ft_putstr_fd("\nusage: ft_ls [-", STDERR_FILENO);
 			ft_putstr_fd(g_sflags, STDERR_FILENO);
 			ft_putendl_fd("] [file ...]",  STDERR_FILENO);
-			exit(0);
+			exit(1);
 		}
 	}
 }
@@ -86,7 +86,9 @@ int parse_input(int ac, char **av)
 	   parse_ifiles(*argv);
 	   fcnt++;
     }
-    return (fcnt);
+	if (fcnt < 2)
+		g_print_header = 0;
+	else
+		g_print_header = 1;
+	return (fcnt);
 }
-
-

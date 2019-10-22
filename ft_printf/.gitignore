@@ -1,9 +1,0 @@
-.vscode
-.DS_Store
-temporary
-*.a
-*.o
-test
-pft
-.pft*
-test.*

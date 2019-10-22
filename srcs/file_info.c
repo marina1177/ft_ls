@@ -34,9 +34,14 @@ int     get_fileinfo(t_fileinfo *file, char *path, char *name)
 {
 	acl_t   acl;
 	char    *filename;
+	char    *acc;
 
-	if (ft_strcmp(path,name) != 0)
-		filename = ft_strjoin(path,name);
+	acc = NULL;
+	if (ft_strcmp(path, name) != 0)
+	{
+		acc = ft_strjoin(path, name);
+		filename = acc;
+	}
 	else
 		filename = path;
 	if (lstat(filename, &(file->ft_stat)) == -1)
@@ -53,13 +58,6 @@ int     get_fileinfo(t_fileinfo *file, char *path, char *name)
 	file->type = get_filetype(file->ft_stat.st_mode);
 	ft_strcpy(file->name, name);
 	ft_strcpy(file->path, path);
+	free(acc);
 	return (0);
-	/*if (xattr < 0)
-		xattr = 0;
-	if (xattr > 0)
-		chr = '@';
-	else if (file->_acl != 0)
-		chr = '+';
-	else
-		chr = ' ';*/
 }

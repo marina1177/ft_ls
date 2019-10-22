@@ -3,7 +3,7 @@
 //
 
 #ifndef FT_LS_M_H
-#define FT_LS_M_H
+# define FT_LS_M_H
 
 
 # include <stdio.h>
@@ -27,7 +27,6 @@
 # include <time.h>
 # include <limits.h>
 
-# include "libft.h"
 # include "ft_printf.h"
 
 # include "flags.h"
@@ -45,9 +44,13 @@ t_mlist					*g_err_f;
 t_flags					g_flags;
 t_mlist					*g_files;
 int						g_file_count;
+int						g_print_header;
 
 int						parse_input(int ac, char **av);
-void					printList(t_mlist* node);
+void					print_list(t_mlist *node, t_max_out *max,
+										char *dir_name);
+void					print_long_entry(t_fileinfo *file,
+										t_max_out *max, char *path);
 
 /*
 ** Error handling
@@ -61,4 +64,7 @@ void					print_err(t_mlist *lst);
 */
 void					traverce_cur_dir(char *dir_name);
 void					trav_dirs(t_mlist *dirs);
+void					get_dir_entries(DIR *dir, char *dir_name,
+										t_mlist **entries, t_max_out *max);
+unsigned long			num_len(unsigned long num);
 #endif
