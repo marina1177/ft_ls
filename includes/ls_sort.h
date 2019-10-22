@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/01 00:41:03 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/21 19:56:10 by wzei             ###   ########.fr       */
+/*   Created: 2019/10/22 19:44:45 by wzei              #+#    #+#             */
+/*   Updated: 2019/10/22 19:44:45 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct				s_maxlen
 	short				maxtype;
     t_8b			maxl_mode;
     t_8b			maxl_nlink;
-    t_8b			maxl_uname;//username
-    t_8b			maxl_gname;//groupname
+    t_8b			maxl_uname;
+    t_8b			maxl_gname;
     t_8b			maxl_size;
     t_8b			maxl_time;
     t_8b			maxl_filename;
@@ -47,7 +47,7 @@ typedef struct				s_lstat
 {
     char 	name[PATH_MAX + 1];
     size_t  namelen;
-}					t_lstat;
+}							t_lstat;
 
 ;
 

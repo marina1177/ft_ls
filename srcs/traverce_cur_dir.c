@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 14:22:18 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/22 14:17:06 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/22 19:34:43 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 int			g_r;
 const char	*g_program_name = "ft_ls";
 
-/*static void	init_lst(t_mlist *lst)
-{
-	lst->next = NULL;
-	lst->prev = NULL;
-	lst->content = NULL;
-	lst->tag = 0;
-}*/
+/*
+**static void	init_lst(t_mlist *lst)
+**{
+**	lst->next = NULL;
+**	lst->prev = NULL;
+**	lst->content = NULL;
+**	lst->tag = 0;
+**}
+*/
 
 static void	print_head(const char *filename, t_max_out *max)
 {
@@ -39,6 +41,7 @@ static void	print_head(const char *filename, t_max_out *max)
 	ft_printf("%s:\n", filename);
 	ft_printf("total: %llu\n", max->blk);
 }
+
 /*
 **static void	get_dir_entries(DIR *dir, char *dir_name, t_mlist **entries)
 **{

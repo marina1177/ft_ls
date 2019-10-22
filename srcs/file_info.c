@@ -1,6 +1,15 @@
-//
-// Created by AN515-52-51JP on 16.10.2019.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   file_info.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bcharity <bcharity@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/16 12:22:28 by bcharity          #+#    #+#             */
+/*   Updated: 2019/10/22 18:55:31 by wzei             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls_m.h"
 
 static enum filetype get_filetype(mode_t m)
@@ -25,16 +34,14 @@ static enum filetype get_filetype(mode_t m)
 		return (symbolic_link);
 	if (m == S_IFSOCK)
 		return (socket);
-//	if (m == S_IFWHT)
-//		return (whiteout);
 	return (unknown);
 }
 
-int     get_fileinfo(t_fileinfo *file, char *path, char *name)
+int	get_fileinfo(t_fileinfo *file, char *path, char *name)
 {
 	acl_t   acl;
-	char    *filename;
-	char    *acc;
+	char	*filename;
+	char	*acc;
 
 	acc = NULL;
 	if (ft_strcmp(path, name) != 0)

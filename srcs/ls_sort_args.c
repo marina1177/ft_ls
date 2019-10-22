@@ -1,6 +1,14 @@
-//
-// Created by Buster Charity on 19/10/2019.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ls_sort_args.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/19 12:22:28 by bcharity          #+#    #+#             */
+/*   Updated: 2019/10/22 19:33:51 by wzei             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "ft_ls_m.h"
 
@@ -17,7 +25,6 @@ void ls_sort_args()
 		ft_mlst_sort(&g_files, &ls_cmp_atime);
 
 	ft_mlst_sort(&g_files, &ls_isdir);
-
 }
 
 void ls_sort_args_file(t_mlist *files)
@@ -46,18 +53,20 @@ void ls_sort_args_file(t_mlist *files)
 	}
 }
 
-/*void ls_sort_args()
-{
-	merge_sort(&g_files, &ls_cmp_lex);
-	ft_printf("\nafter_lexsort:\n"); print_list(g_files);ft_printf("\n");
-	if (g_flags.f_sort_ & SORTI_SB)
-		merge_sort(&g_files, &ls_cmp_size);
-	else if ((g_flags.f_sort_ & SORTI_T_) && \
-				!(g_flags.f_sort_t & SORTI_U_))
-		merge_sort(&g_files, &ls_cmp_mtime);
-	else if (g_flags.f_sort_t & SORTI_U_)
-		merge_sort(&g_files, &ls_cmp_atime);
-
-	merge_sort(&g_files, &ls_isdir);
-
-}*/
+/*
+**void ls_sort_args()
+**{
+**	merge_sort(&g_files, &ls_cmp_lex);
+**	ft_printf("\nafter_lexsort:\n"); print_list(g_files);ft_printf("\n");
+**	if (g_flags.f_sort_ & SORTI_SB)
+**		merge_sort(&g_files, &ls_cmp_size);
+**	else if ((g_flags.f_sort_ & SORTI_T_) && \
+**				!(g_flags.f_sort_t & SORTI_U_))
+**		merge_sort(&g_files, &ls_cmp_mtime);
+**	else if (g_flags.f_sort_t & SORTI_U_)
+**		merge_sort(&g_files, &ls_cmp_atime);
+**
+**	merge_sort(&g_files, &ls_isdir);
+**
+**}
+*/

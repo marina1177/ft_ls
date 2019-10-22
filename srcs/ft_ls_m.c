@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/21 19:49:01 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/22 12:23:44 by wzei             ###   ########.fr       */
+/*   Created: 2019/10/20 12:22:28 by bcharity          #+#    #+#             */
+/*   Updated: 2019/10/22 18:59:46 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,61 +42,3 @@ int			main(int ac, char **av)
 	trav_dirs(g_dirs);
 	return (0);
 }
-
-/*
-**		ft_printf("before_sort:\n");
-**	for (int i = 0; i < g_files->count; i++)
-**	{
-**		ft_printf("data[%d] = %s\n", i,
-**        ((t_fileinfo*)(g_files->data)[i])->name);
-**	}
-**	ls_sort_args();
-**	ft_printf("ater_sort:\n");
-**	for (int i = 0; i < g_files->count; i++)
-**	{
-**		ft_printf("data[%d] = %s\n", i,
-**      ((t_fileinfo*)(g_files->data)[i])->name);
-**	}
-*/
-
-/*
-**    while (g_files)
-**        //grand_loop();
-**
-**        DIR				*dir;
-**    struct dirent	*f_d;
-**    t_vector		*v;
-**    t_test			*tst;
-**    struct	ft_stat	ft_stat;
-**
-**    int ch;
-**    t_flgs          flgs;
-**    //ls_parse_input()
-**
-**
-**    //v = ft_vecnew();
-**    dir = opendir(argv[1]);
-**    while ((f_d = readdir(dir)))
-**    {
-**        tst = (t_test *)malloc(sizeof(t_test ));
-**        ft_printf ("{%s}\n",f_d->d_name);
-**        ft_stat(ft_strjoin(argv[1], f_d->d_name), &(tst->ft_stat));
-** //tmp - delete
-**
-**        tst->name = f_d->d_name;
-**       // ft_printf ("size[%s] = {%lld}\n ",
-**    tst->name,tst->ft_stat.st_blocks);
-**        ft_vecadd(v, tst);
-**    }
-**
-**    char *sort_flg = "rat";
-**    int ifun = cmpfun_indx(&flgs);
-**
-**    quicksort(v, 0, v->count - 1, &flgs);
-**
-**    ft_printf("ater_sort:\n");
-**    for (int i = 0; i < v->count; i++)
-**    {
-**        ft_printf("data[%d] = %s\n", i, ((t_test*)(v->data)[i])->name);
-**    }-
-*/

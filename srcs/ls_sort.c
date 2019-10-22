@@ -6,13 +6,13 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 13:37:39 by bcharity          #+#    #+#             */
-/*   Updated: 2019/10/22 00:58:12 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/22 19:02:53 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ls_sort.h"
 
-void	swap(void **a, void **b)
+static void	swap(void **a, void **b)
 {
 	void	*t;
 
@@ -22,7 +22,7 @@ void	swap(void **a, void **b)
 }
 
 
-int partition(t_vector *v, int low, int high, int (*f)(void *, void *))
+static int	partition(t_vector *v, int low, int high, int (*f)(void *, void *))
 {
 	t_fileinfo	*pivot;
 	int			i;
@@ -43,7 +43,7 @@ int partition(t_vector *v, int low, int high, int (*f)(void *, void *))
 	return (i + 1);
 }
 
-void quicksort(t_vector *v, int low, int high, int (*f)(void *, void *))
+void		quicksort(t_vector *v, int low, int high, int (*f)(void *, void *))
 {
 	if (low < high)
 	{

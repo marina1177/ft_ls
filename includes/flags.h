@@ -1,6 +1,14 @@
-//
-// Created by Buster Charity on 13/10/2019.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   flags.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/13 12:22:28 by bcharity          #+#    #+#             */
+/*   Updated: 2019/10/22 19:41:55 by wzei             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef FLAGS_H
 #define FLAGS_H
@@ -37,8 +45,8 @@ typedef struct				s_flags
  ** recur_flgs
  */
 
-# define DIR_ASFI (t_1b)0b10//d
-# define RECUR_LS (t_1b)0b01//R
+# define DIR_ASFI (t_1b)0b10
+# define RECUR_LS (t_1b)0b01
 
 /*
  ** sort_flgs
@@ -47,7 +55,7 @@ typedef struct				s_flags
 # define SORTI_R_ (t_2b)0b10000
 # define SORTI_T_ (t_2b)0b01000
 # define SORTI_F_ (t_2b)0b00100
-# define SORTI_SB (t_2b)0b00010// сортировать по размеру, сначала большие
+# define SORTI_SB (t_2b)0b00010
 # define SORTI_A_ (t_2b)0b00001
 
 /*
