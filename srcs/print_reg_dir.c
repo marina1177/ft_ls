@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:57:42 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/23 15:12:11 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 15:37:27 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ void	print_reg_dir(t_long_out *l_o, t_fileinfo *file, t_max_out *max)
 		(l_o->gr)->gr_name,
 		((int)max->major == 0 ? "" : "\t "),
 		(int)max->size, (int)num_len((l_o->st).st_size),
-		(int)(l_o->st).st_size, time,
+		(int)(l_o->st).st_size, l_o->time,
 		file->name);
 }

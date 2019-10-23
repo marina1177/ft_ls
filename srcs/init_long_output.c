@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:55:23 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/23 15:12:07 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 15:32:17 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,26 +58,27 @@ static char	xattr(t_fileinfo *file)
 
 static char	*get_time(struct stat *st)
 {
-	char	*tm;
-	time_t	cur_time;
-	time_t	targ_time;
+    static char	rtn[13];
+	char		*tm;	
+	time_t		cur_time;
+	time_t		targ_time;
 
 	cur_time = time(NULL);
 	targ_time = ((st->st_mtimespec).tv_sec);
 	tm = ctime(&targ_time);
 	if ((cur_time - targ_time) < (31536000 / 2))
 	{
-		ft_memmove(tm, tm + 4, 12);
-		tm[12] = '\0';
+		ft_memmove(rtn, tm + 4, 12);
+		rtn[12] = '\0';
 	}
 	else
 	{
-		ft_memmove(tm, tm + 4, 6);
-		tm[6] = ' ';
-		ft_memmove(tm + 7, tm + 19, 5);
-		tm[12] = '\0';
+		ft_memmove(rtn, tm + 4, 6);
+		rtn[6] = ' ';
+		ft_memmove(rtn + 7, tm + 19, 5);
+		rtn[12] = '\0';
 	}
-	return (tm);
+	return (rtn);
 }
 
 void		init_long_output(t_long_out *l_o, t_fileinfo *file)

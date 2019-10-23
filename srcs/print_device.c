@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 15:00:59 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/23 15:02:17 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 15:37:49 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ void	print_device(t_long_out *l_o, t_fileinfo *file, t_max_out *max)
 		(l_o->gr)->gr_name,
 		(int)max->major, (int)num_len(major), major,
 		(int)max->minor, (int)num_len(minor), minor,
-		time, file->name);
+		l_o->time, file->name);
 }
