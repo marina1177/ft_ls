@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/20 13:37:39 by bcharity          #+#    #+#             */
-/*   Updated: 2019/10/22 20:06:40 by wzei             ###   ########.fr       */
+/*   Created: 2019/10/22 20:22:21 by wzei              #+#    #+#             */
+/*   Updated: 2019/10/23 12:21:05 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_mlist *ft_mlstnew(void *content, size_t tag)
+t_mlist	*ft_mlstnew(void *content, size_t tag)
 {
 	t_mlist		*res;
 

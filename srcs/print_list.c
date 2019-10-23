@@ -6,13 +6,13 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 00:50:50 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/22 12:38:39 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 13:47:05 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls_m.h"
 
-void	print_list(t_mlist* node, t_max_out *max, char *dir_name)
+void	print_list(t_mlist *node, t_max_out *max, char *dir_name)
 {
 	while (node != NULL)
 	{

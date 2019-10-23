@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 14:22:18 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/22 19:34:43 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 13:38:05 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ const char	*g_program_name = "ft_ls";
 
 static void	print_head(const char *filename, t_max_out *max)
 {
-	static int count = 0;
-	
+	static int	count = 0;
+
 	if (!g_print_header)
 	{
 		count++;
@@ -67,7 +67,7 @@ static void	print_head(const char *filename, t_max_out *max)
 **}
 */
 
-static void traverce_subdir(size_t len, char *dir_name,
+static void	traverce_subdir(size_t len, char *dir_name,
 							char *file_name)
 {
 	char			*new_name;

@@ -6,13 +6,13 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 00:05:07 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/22 19:33:02 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 13:55:19 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls_m.h"
 
-static void rights(char *rgh, struct stat *file_stat)
+static void	rights(char *rgh, struct stat *file_stat)
 {
 	rgh[0] = (file_stat->st_mode & S_IRUSR) ? 'r' : '-';
 	rgh[1] = (file_stat->st_mode & S_IWUSR) ? 'w' : '-';
@@ -23,10 +23,10 @@ static void rights(char *rgh, struct stat *file_stat)
 	rgh[6] = (file_stat->st_mode & S_IROTH) ? 'r' : '-';
 	rgh[7] = (file_stat->st_mode & S_IWOTH) ? 'w' : '-';
 	rgh[8] = (file_stat->st_mode & S_IXOTH) ? 'x' : '-';
-	rgh[9] = '\0';	
+	rgh[9] = '\0';
 }
 
-static char file_type(struct stat *file_stat)
+static char	file_type(struct stat *file_stat)
 {
 	if (S_ISDIR(file_stat->st_mode))
 		return ('d');
@@ -40,28 +40,28 @@ static char file_type(struct stat *file_stat)
 		return ('f');
 	else if (S_ISSOCK(file_stat->st_mode))
 		return ('s');
-	return ('-');   
+	return ('-');
 }
 
-static char xattr(t_fileinfo *file)
+static char	xattr(t_fileinfo *file)
 {
-	if (file->_xattr < 0)
-		file->_xattr = 0;
-	if (file->_xattr > 0)
+	if (file->sz_xattr < 0)
+		file->sz_xattr = 0;
+	if (file->sz_xattr > 0)
 		return ('@');
-	else if (file->_acl != 0)
+	else if (file->i_acl != 0)
 		return ('+');
 	else
 		return (' ');
 	return (' ');
 }
 
-static char *get_time(struct stat *st)
+static char	*get_time(struct stat *st)
 {
 	char	*tm;
-	time_t cur_time;
-	time_t targ_time;
-	
+	time_t	cur_time;
+	time_t	targ_time;
+
 	cur_time = time(NULL);
 	targ_time = ((st->st_mtimespec).tv_sec);
 	tm = ctime(&targ_time);
@@ -76,14 +76,14 @@ static char *get_time(struct stat *st)
 		tm[6] = ' ';
 		ft_memmove(tm + 7, tm + 19, 5);
 		tm[12] = '\0';
-	}	
+	}
 	return (tm);
 }
 
 static void	print_device(t_long_out *l_o, t_fileinfo *file, t_max_out *max)
 {
-	int			 major;
-	int			 minor;
+	int	major;
+	int	minor;
 
 	major = (int)major((l_o->st).st_rdev);
 	minor = (int)minor((l_o->st).st_rdev);
@@ -155,8 +155,8 @@ static void	init_long_output(t_long_out *l_o, t_fileinfo *file)
 
 void		print_long_entry(t_fileinfo *file, t_max_out *max, char *path)
 {
-	t_long_out l_o;
-	
+	t_long_out	l_o;
+
 	init_long_output(&l_o, file);
 	if (l_o.f_type == '-' || l_o.f_type == 'd')
 		print_reg_dir(&l_o, file, max);

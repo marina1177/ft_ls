@@ -5,16 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/20 13:37:39 by bcharity          #+#    #+#             */
-/*   Updated: 2019/10/22 20:07:15 by wzei             ###   ########.fr       */
+/*   Created: 2019/10/22 20:22:36 by wzei              #+#    #+#             */
+/*   Updated: 2019/10/23 12:20:42 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_mlstpush(t_mlist **mlst, t_mlist *nlst)
+void	ft_mlstpush(t_mlist **mlst, t_mlist *nlst)
 {
-	t_mlist		*tmp;
+	t_mlist	*tmp;
 
 	if (!mlst || !nlst)
 		return ;

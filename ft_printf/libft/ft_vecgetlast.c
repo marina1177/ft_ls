@@ -6,13 +6,13 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 21:26:54 by wzei              #+#    #+#             */
-/*   Updated: 2019/09/24 21:35:34 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 12:20:10 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			*ft_vecgetlast(t_vector *v)
+void	*ft_vecgetlast(t_vector *v)
 {
-    return (ft_vecget(v, v->count - 1));
+	return (ft_vecget(v, v->count - 1));
 }

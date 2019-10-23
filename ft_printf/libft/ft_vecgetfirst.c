@@ -6,13 +6,13 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/24 21:25:32 by wzei              #+#    #+#             */
-/*   Updated: 2019/09/25 06:34:35 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 12:19:40 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void			*ft_vecgetfirst(t_vector *v)
+void	*ft_vecgetfirst(t_vector *v)
 {
-    return (ft_vecget(v, 0));
+	return (ft_vecget(v, 0));
 }

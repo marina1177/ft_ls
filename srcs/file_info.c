@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   file_info.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcharity <bcharity@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 12:22:28 by bcharity          #+#    #+#             */
-/*   Updated: 2019/10/22 18:55:31 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 13:55:19 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls_m.h"
 
-static enum filetype	get_filetype(mode_t m)
+static enum e_filetype	get_e_filetype(mode_t m)
 {
 	m &= S_IFMT;
 	if (m == S_IFIFO)
@@ -37,7 +37,8 @@ static enum filetype	get_filetype(mode_t m)
 	return (unknown);
 }
 
-static void				init_str(char *path, char *name, char **acc, char **filename)
+static void				init_str(char *path, char *name,
+								char **acc, char **filename)
 {
 	if (ft_strcmp(path, name) != 0)
 	{
@@ -50,7 +51,7 @@ static void				init_str(char *path, char *name, char **acc, char **filename)
 
 int						get_fileinfo(t_fileinfo *file, char *path, char *name)
 {
-	acl_t   acl;
+	acl_t	acl;
 	char	*filename;
 	char	*acc;
 
@@ -59,15 +60,15 @@ int						get_fileinfo(t_fileinfo *file, char *path, char *name)
 	if (lstat(filename, &(file->ft_stat)) == -1)
 		return (-1);
 	acl = acl_get_link_np(filename, ACL_TYPE_EXTENDED);
-	file->_xattr = listxattr(filename, NULL, 0, XATTR_NOFOLLOW);
+	file->sz_xattr = listxattr(filename, NULL, 0, XATTR_NOFOLLOW);
 	if (acl == NULL)
-		file->_acl = 0;
+		file->i_acl = 0;
 	else
 	{
-		file->_acl = 1;
+		file->i_acl = 1;
 		acl_free(acl);
 	}
-	file->type = get_filetype(file->ft_stat.st_mode);
+	file->type = get_e_filetype(file->ft_stat.st_mode);
 	ft_strcpy(file->name, name);
 	ft_strcpy(file->path, path);
 	free(acc);

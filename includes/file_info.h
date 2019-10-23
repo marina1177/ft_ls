@@ -6,18 +6,18 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 19:44:12 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/22 19:44:12 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 13:58:00 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LS_SORT_FILE_INFO_H
-#define LS_SORT_FILE_INFO_H
+# define LS_SORT_FILE_INFO_H
 
-#include "ft_ls_m.h"
+# include "ft_ls_m.h"
 
 typedef unsigned char	t_1b;
 
-enum filetype
+enum	e_filetype
 {
 	unknown,
 	fifo,
@@ -36,17 +36,17 @@ typedef struct		s_fileinfo
 	char			name[256];
 	char			linkname[256];
 	char			path[1024];
-	int				_acl;
-	ssize_t			_xattr;
+	int				i_acl;
+	ssize_t			sz_xattr;
 	struct stat		ft_stat;
-	enum filetype	type;
+	enum e_filetype	type;
 }					t_fileinfo;
 
 typedef struct		s_max_out
 {
 	unsigned long			lnk;
 	unsigned long			size;
-	unsigned long			major;	
+	unsigned long			major;
 	unsigned long			minor;
 	unsigned long			name;
 	unsigned long			user;

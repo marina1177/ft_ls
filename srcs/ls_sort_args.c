@@ -6,13 +6,13 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/19 12:22:28 by bcharity          #+#    #+#             */
-/*   Updated: 2019/10/22 19:53:09 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 13:46:30 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls_m.h"
 
-void ls_sort_args()
+void	ls_sort_args(void)
 {
 	ft_mlst_sort(&g_files, &ls_cmp_lex);
 	if (g_flags.f_sort_ & SORTI_SB)
@@ -22,13 +22,12 @@ void ls_sort_args()
 		ft_mlst_revsort(&g_files, &ls_cmp_mtime);
 	else if (g_flags.f_sort_t & SORTI_U_)
 		ft_mlst_sort(&g_files, &ls_cmp_atime);
-
 	ft_mlst_sort(&g_files, &ls_isdir);
 }
 
-void ls_sort_args_file(t_mlist *files)
+void	ls_sort_args_file(t_mlist *files)
 {
-	if (g_flags.f_sort_  & SORTI_R_)
+	if (g_flags.f_sort_ & SORTI_R_)
 	{
 		ft_mlst_revsort(&files, &ls_cmp_lex);
 		if (g_flags.f_sort_ & SORTI_SB)
