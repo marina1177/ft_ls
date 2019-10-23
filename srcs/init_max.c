@@ -6,20 +6,20 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 03:22:27 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/22 14:24:31 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 13:24:45 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls_m.h"
 
-void    init_max(t_max_out *max)
+void	init_max(t_max_out *max)
 {
-    max->lnk = 0;
-    max->name = 0;
-    max->size = 0;
-    max->minor = 0;
-    max->major = 0;
-    max->user = 0;
-    max->group = 0;
-    max->blk = 0;
+	max->lnk = 0;
+	max->name = 0;
+	max->size = 0;
+	max->minor = 0;
+	max->major = 0;
+	max->user = 0;
+	max->group = 0;
+	max->blk = 0;
 }

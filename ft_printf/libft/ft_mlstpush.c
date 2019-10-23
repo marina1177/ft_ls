@@ -1,12 +1,20 @@
-//
-// Created by AN515-52-51JP on 20.10.2019.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_mlstpush.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/22 20:22:36 by wzei              #+#    #+#             */
+/*   Updated: 2019/10/23 12:20:42 by wzei             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_mlstpush(t_mlist **mlst, t_mlist *nlst)
+void	ft_mlstpush(t_mlist **mlst, t_mlist *nlst)
 {
-	t_mlist		*tmp;
+	t_mlist	*tmp;
 
 	if (!mlst || !nlst)
 		return ;

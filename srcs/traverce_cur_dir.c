@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 14:22:18 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/22 14:17:06 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 20:26:14 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,56 +15,26 @@
 int			g_r;
 const char	*g_program_name = "ft_ls";
 
-/*static void	init_lst(t_mlist *lst)
-{
-	lst->next = NULL;
-	lst->prev = NULL;
-	lst->content = NULL;
-	lst->tag = 0;
-}*/
-
 static void	print_head(const char *filename, t_max_out *max)
 {
-	static int count = 0;
-	
+	static int	count = 0;
+
 	if (!g_print_header)
 	{
 		count++;
 		g_print_header = 1;
-		ft_printf("total %llu\n", max->blk);
+		if (g_flags.f_output1 & OUT_LCOL)
+			ft_printf("total %llu\n", max->blk);
 		return ;
 	}
 	if (count++)
 		ft_printf("\n");
 	ft_printf("%s:\n", filename);
-	ft_printf("total: %llu\n", max->blk);
+	if (g_flags.f_output1 & OUT_LCOL)
+		ft_printf("total: %llu\n", max->blk);
 }
-/*
-**static void	get_dir_entries(DIR *dir, char *dir_name, t_mlist **entries)
-**{
-**	//int				status;
-**	struct dirent	*d_d;
-**	long			*acc;
-**	t_fileinfo		file;
-**	char			*dir_name_slash;
-**
-**	d_d = NULL;
-**	dir_name_slash = ft_strjoin(dir_name, "/");
-**	while ((d_d = readdir(dir)) && dir->__dd_loc < 4080)
-**	{
-**		get_fileinfo(&file, dir_name_slash, d_d->d_name);
-**		ft_mlstpush(entries, ft_mlstnew(&file, sizeof(t_fileinfo)));
-**	}
-**	if (dir->__dd_loc == 4080)
-**	{
-**		get_fileinfo(&file, dir_name_slash, d_d->d_name);
-**		ft_mlstpush(entries, ft_mlstnew(&file, sizeof(t_fileinfo)));
-**	}
-**	ft_strdel(&dir_name_slash);
-**}
-*/
 
-static void traverce_subdir(size_t len, char *dir_name,
+static void	traverce_subdir(size_t len, char *dir_name,
 							char *file_name)
 {
 	char			*new_name;
@@ -73,7 +43,8 @@ static void traverce_subdir(size_t len, char *dir_name,
 	if ((new_name = ft_strnew(len)))
 	{
 		ft_strncpy(new_name, dir_name, len);
-		ft_strlcat(new_name, "/", len);
+		if (ft_strcmp(dir_name, "/"))
+			ft_strlcat(new_name, "/", len);
 		ft_strlcat(new_name, file_name, len);
 		traverce_cur_dir(new_name);
 		ft_strdel(&new_name);

@@ -6,13 +6,13 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 13:37:39 by bcharity          #+#    #+#             */
-/*   Updated: 2019/10/22 00:58:12 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 13:40:04 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ls_sort.h"
 
-void	swap(void **a, void **b)
+static void	swap(void **a, void **b)
 {
 	void	*t;
 
@@ -21,37 +21,38 @@ void	swap(void **a, void **b)
 	*b = t;
 }
 
-
-int partition(t_vector *v, int low, int high, int (*f)(void *, void *))
+static int	partition(t_vector *v, int low, int high, int (*f)(void *, void *))
 {
 	t_fileinfo	*pivot;
 	int			i;
+	int			j;
 	t_fileinfo	*tmp;
 
 	pivot = (t_fileinfo*)v->data[high];
 	i = (low - 1);
-	for (int j = low; j <= high - 1; j++)
+	j = low;
+	while (j <= high - 1)
 	{
-       tmp = (t_fileinfo*)(v->data[j]);
-        if (f(tmp, pivot) <= 0)
+		tmp = (t_fileinfo*)(v->data[j]);
+		if (f(tmp, pivot) <= 0)
 		{
 			i++;
 			swap(&((v->data)[i]), &((v->data)[j]));
 		}
+		j++;
 	}
 	swap(&((v->data)[i + 1]), &((v->data)[high]));
 	return (i + 1);
 }
 
-void quicksort(t_vector *v, int low, int high, int (*f)(void *, void *))
+void		quicksort(t_vector *v, int low, int high, int (*f)(void *, void *))
 {
+	int pi;
+
 	if (low < high)
 	{
-		int pi = partition(v, low, high, f);
+		pi = partition(v, low, high, f);
 		quicksort(v, low, pi - 1, f);
 		quicksort(v, pi + 1, high, f);
 	}
 }
-
-
-

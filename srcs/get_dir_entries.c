@@ -6,23 +6,23 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 19:30:32 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/22 10:52:13 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 13:41:14 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls_m.h"
 
-static int  chck_cnd(const char *name)
+static int	chck_cnd(const char *name)
 {
 	if (g_flags.f_sort_ & SORTI_A_)
 		return (1);
 	if (name[0] != '.')
-        return (1);
+		return (1);
 	return (0);
 }
 
-void	get_dir_entries(DIR *dir, char *dir_name, t_mlist **entries,
-                        t_max_out *max)
+void		get_dir_entries(DIR *dir, char *dir_name, t_mlist **entries,
+						t_max_out *max)
 {
 	struct dirent	*d_d;
 	t_fileinfo		file;

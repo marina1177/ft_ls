@@ -1,10 +1,17 @@
-//
-// Created by Buster Charity on 13/10/2019.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ls_m.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/22 19:44:32 by wzei              #+#    #+#             */
+/*   Updated: 2019/10/23 16:08:57 by wzei             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef FT_LS_M_H
 # define FT_LS_M_H
-
 
 # include <stdio.h>
 # include <unistd.h>
@@ -28,6 +35,7 @@
 # include <limits.h>
 
 # include "ft_printf.h"
+# include "libft.h"
 
 # include "flags.h"
 # include "file_info.h"
@@ -51,6 +59,12 @@ void					print_list(t_mlist *node, t_max_out *max,
 										char *dir_name);
 void					print_long_entry(t_fileinfo *file,
 										t_max_out *max, char *path);
+void					print_reg_dir(t_long_out *l_o,
+										t_fileinfo *file, t_max_out *max);
+void					print_link(t_long_out *l_o, t_fileinfo *file,
+										char *path, t_max_out *max);
+void					print_device(t_long_out *l_o, t_fileinfo *file,
+										t_max_out *max);
 
 /*
 ** Error handling

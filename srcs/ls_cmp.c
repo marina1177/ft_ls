@@ -1,6 +1,15 @@
-//
-// Created by Buster Charity on 19/10/2019.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ls_cmp.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/10/19 12:22:28 by bcharity          #+#    #+#             */
+/*   Updated: 2019/10/23 13:47:44 by wzei             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls_m.h"
 
 int		ls_isdir(void *a, void *b)
@@ -24,9 +33,6 @@ int		ls_cmp_lex(void *a, void *b)
 
 	tfa = (t_fileinfo*)a;
 	tfb = (t_fileinfo*)b;
-	//ft_printf("\naname_%s\n",((t_fileinfo*)a)->name );
-	//ft_printf("bname_%s\n",((t_fileinfo*)b)->name );
-
 	return (ft_strcmp(tfa->name, tfb->name));
 }
 

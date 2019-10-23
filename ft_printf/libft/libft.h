@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 18:46:11 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/21 17:21:22 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/22 20:12:56 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ typedef struct	s_list
 
 typedef struct	s_vector
 {
-	void	**data;
-	int		size;
-	int		count;
+	void			**data;
+	int				size;
+	int				count;
 }				t_vector;
 
 typedef struct	s_mlist
 {
 	void			**content;
-	size_t          tag;
+	size_t			tag;
 	struct s_mlist	*prev;
 	struct s_mlist	*next;
 }				t_mlist;

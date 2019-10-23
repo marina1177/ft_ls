@@ -102,3 +102,6 @@ ft_ls
 
 test
 __ft_printf
+*.txt
+*.sh
+mul
