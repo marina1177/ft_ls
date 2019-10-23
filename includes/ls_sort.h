@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 19:44:45 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/23 14:06:02 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 14:11:08 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,20 @@ typedef unsigned short	t_2b;
 typedef unsigned int	t_4b;
 typedef unsigned long	t_8b;
 
-# define timercmp(a, b, CMP) \
-	(((a)->tv_sec == (b)->tv_sec) ? \
-	((a)->tv_nsec CMP (b)->tv_nsec) : \
-	((a)->tv_sec CMP (b)->tv_sec))
+/*
+**# define timercmp(a, b, CMP) \
+**	(((a)->tv_sec == (b)->tv_sec) ? \
+**	((a)->tv_nsec CMP (b)->tv_nsec) : \
+**	((a)->tv_sec CMP (b)->tv_sec))
+*/
 
-typedef struct				s_test
+typedef struct		s_test
 {
 	struct stat				ft_stat;
 	char					*name;
-}							t_test;
+}					t_test;
 
-typedef struct				s_maxlen
+typedef struct		s_maxlen
 {
 	short	maxtype;
 	t_8b	maxl_mode;
@@ -41,19 +43,19 @@ typedef struct				s_maxlen
 	t_8b	maxl_size;
 	t_8b	maxl_time;
 	t_8b	maxl_filename;
-}							t_maxlen;
+}					t_maxlen;
 
-typedef struct				s_lstat
+typedef struct		s_lstat
 {
 	char	name[PATH_MAX + 1];
 	size_t	namelen;
-}							t_lstat;
+}					t_lstat;
 
 /*
 ** ls_sort_args.c
 */
-void ls_sort_args();
-void ls_sort_args_file(t_mlist *files);
+void				ls_sort_args();
+void				ls_sort_args_file(t_mlist *files);
 
 /*
 ** ls_sort.c
@@ -61,7 +63,6 @@ void ls_sort_args_file(t_mlist *files);
 
 void				quicksort(t_vector *v, int low, int high,
 								int (*f)(void *, void *));
-
 
 /*
 ** ft_lstsort.c

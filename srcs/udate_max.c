@@ -6,22 +6,28 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 10:31:08 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/22 19:34:29 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 15:17:01 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls_m.h"
 
-void	udate_max(t_fileinfo *file, t_max_out *max)
+static void	init_var(t_fileinfo *file, struct stat *st,
+				struct passwd **pass, struct group **gr)
+{
+	*st = file->ft_stat;
+	*gr = getgrgid(st->st_gid);
+	*pass = getpwuid(st->st_uid);
+}
+
+void		udate_max(t_fileinfo *file, t_max_out *max)
 {
 	unsigned long	acc;
 	struct stat		st;
 	struct passwd	*pass;
 	struct group	*gr;
 
-	st = file->ft_stat;
-	gr = getgrgid(st.st_gid);
-	pass = getpwuid(st.st_uid);
+	init_var(file, &st, &pass, &gr);
 	if ((acc = ft_strlen(file->name)) > max->name)
 		max->name = acc;
 	if ((acc = ft_strlen((gr->gr_name))) > max->group)

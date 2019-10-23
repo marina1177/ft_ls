@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 12:22:28 by bcharity          #+#    #+#             */
-/*   Updated: 2019/10/23 13:55:19 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 15:06:24 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void				init_str(char *path, char *name,
 		*filename = *acc;
 	}
 	else
-		*filename = *path;
+		*filename = path;
 }
 
 int						get_fileinfo(t_fileinfo *file, char *path, char *name)

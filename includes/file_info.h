@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 19:44:12 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/23 13:58:00 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 14:56:38 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ typedef struct		s_long_out
 int					get_fileinfo(t_fileinfo *file, char *path, char *name);
 void				udate_max(t_fileinfo *file, t_max_out *max);
 void				init_max(t_max_out *max);
+void				init_long_output(t_long_out *l_o, t_fileinfo *file);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/24 19:46:53 by wzei              #+#    #+#              #
-#    Updated: 2019/10/22 18:46:10 by wzei             ###   ########.fr        #
+#    Updated: 2019/10/23 15:05:37 by wzei             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,11 @@ FT_LS_M_SRC =   file_info.c \
 				print_list.c \
 				udate_max.c \
 				init_max.c \
-				num_len.c
+				num_len.c \
+				init_long_output.c \
+				print_device.c \
+				print_link.c \
+				print_reg_dir.c
 
 DIR_S = srcs
 DIR_H = includes
