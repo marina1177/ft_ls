@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 19:44:32 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/23 15:02:06 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 16:08:57 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # include <limits.h>
 
 # include "ft_printf.h"
+# include "libft.h"
 
 # include "flags.h"
 # include "file_info.h"
