@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 14:55:23 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/23 15:44:10 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 15:53:00 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static char	xattr(t_fileinfo *file)
 static char	*get_time(struct stat *st)
 {
 	static char	rtn[13];
-	char		*tm;	
+	char		*tm;
 	time_t		cur_time;
 	time_t		targ_time;
 
