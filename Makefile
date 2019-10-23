@@ -6,7 +6,7 @@
 #    By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/24 19:46:53 by wzei              #+#    #+#              #
-#    Updated: 2019/10/23 18:38:41 by wzei             ###   ########.fr        #
+#    Updated: 2019/10/23 18:44:01 by wzei             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -122,6 +122,7 @@ mul: mul_clean fclean
 	@rm tmp_src2.txt
 	@echo "SRCS_S = \\" >> $(DIR_MUL)/Makefile
 	@cat tmp_src.txt >> $(DIR_MUL)/Makefile
+	@rm tmp_src.txt
 	@echo '\nSRCS = $$(addprefix $$(DIR_S)/,$$(SRCS_S))' >> $(DIR_MUL)/Makefile
 	@echo 'OBJS = $$(addprefix $$(DIR_O)/,$$(SRCS_S:.c=.o))' >> $(DIR_MUL)/Makefile
 	@echo '\nDIR_S = srcs' >> $(DIR_MUL)/Makefile
