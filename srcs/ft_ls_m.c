@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 12:22:28 by bcharity          #+#    #+#             */
-/*   Updated: 2019/10/22 18:59:46 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 21:28:36 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ static void	use_default_files(t_mlist **files)
 	}
 }
 
-int			main(int ac, char **av)
+int			main(int argc, char **argv)
 {
 	t_max_out max;
 
 	init_max(&max);
-	if ((g_file_count = parse_input(ac, av)) == 0)
+	if ((g_file_count = parse_input(argc, argv)) == 0)
 		use_default_files(&g_files);
 	ls_sort_args_file(g_files);
 	ft_mlst_sort(&g_err_f, &ls_cmp_lex);

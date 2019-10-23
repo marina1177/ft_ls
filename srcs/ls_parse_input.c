@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 12:22:28 by bcharity          #+#    #+#             */
-/*   Updated: 2019/10/23 13:46:07 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 21:34:38 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void		set_flags(char cf, long offset)
 		g_flags.f_sort_t = g_aflags[offset];
 }
 
-static void		parse_flags(char *s_avflgs)
+static int		parse_flags(char *s_avflgs)
 {
 	char	*p;
 	char	*ch;
@@ -70,6 +70,8 @@ static void		parse_flags(char *s_avflgs)
 	p = s_avflgs;
 	while ((p++) && *p != '\0')
 	{
+		if (*p == '-')
+			return (1);
 		if ((ch = (char*)ft_memchr(&(g_sflags[0]), *p, NUMBER_FLAGS)) != NULL)
 			set_flags(*p, ch - g_sflags);
 		else
@@ -82,6 +84,7 @@ static void		parse_flags(char *s_avflgs)
 			exit(1);
 		}
 	}
+	return (0);
 }
 
 int				parse_input(int ac, char **av)
@@ -94,14 +97,14 @@ int				parse_input(int ac, char **av)
 	if (ac == 1)
 		return (0);
 	argv = av;
-	argc = ac;
-	while (*(++argv) && **argv == '-')
-		parse_flags(*argv);
-	--argv;
+	argc = 1;
+	while (argv[argc] && argv[argc][0] == '-')
+		if (parse_flags(argv[argc++]))
+			break ;
 	fcnt = 0;
-	while (*(++argv))
+	while (argv[argc])
 	{
-		parse_ifiles(*argv);
+		parse_ifiles(argv[argc++]);
 		fcnt++;
 	}
 	if (fcnt < 2)

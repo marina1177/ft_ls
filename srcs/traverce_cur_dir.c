@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 14:22:18 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/23 15:56:47 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 20:26:14 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static void	traverce_subdir(size_t len, char *dir_name,
 	if ((new_name = ft_strnew(len)))
 	{
 		ft_strncpy(new_name, dir_name, len);
-		ft_strlcat(new_name, "/", len);
+		if (ft_strcmp(dir_name, "/"))
+			ft_strlcat(new_name, "/", len);
 		ft_strlcat(new_name, file_name, len);
 		traverce_cur_dir(new_name);
 		ft_strdel(&new_name);
