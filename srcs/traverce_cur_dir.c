@@ -6,7 +6,7 @@
 /*   By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 14:22:18 by wzei              #+#    #+#             */
-/*   Updated: 2019/10/23 14:12:25 by wzei             ###   ########.fr       */
+/*   Updated: 2019/10/23 15:56:47 by wzei             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,15 @@ static void	print_head(const char *filename, t_max_out *max)
 	{
 		count++;
 		g_print_header = 1;
-		ft_printf("total %llu\n", max->blk);
+		if (g_flags.f_output1 & OUT_LCOL)
+			ft_printf("total %llu\n", max->blk);
 		return ;
 	}
 	if (count++)
 		ft_printf("\n");
 	ft_printf("%s:\n", filename);
-	ft_printf("total: %llu\n", max->blk);
+	if (g_flags.f_output1 & OUT_LCOL)
+		ft_printf("total: %llu\n", max->blk);
 }
 
 static void	traverce_subdir(size_t len, char *dir_name,
