@@ -6,7 +6,7 @@
 #    By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/24 19:46:53 by wzei              #+#    #+#              #
-#    Updated: 2019/10/23 15:05:37 by wzei             ###   ########.fr        #
+#    Updated: 2019/10/23 15:58:58 by wzei             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ clean:
 	make -C ft_printf clean
 
 fclean: clean
-	rm -f *.bin
+	rm -f $(NAME)
 	make -C ft_printf fclean
 
 re: fclean all
