@@ -6,7 +6,7 @@
 #    By: wzei <wzei@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/24 19:46:53 by wzei              #+#    #+#              #
-#    Updated: 2019/10/23 18:34:07 by wzei             ###   ########.fr        #
+#    Updated: 2019/10/23 18:38:41 by wzei             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,29 +36,6 @@ FT_LS_M_SRC =   file_info.c \
 				print_device.c \
 				print_link.c \
 				print_reg_dir.c \
-				$(MUL_O)
-
-MUL_O =	ft_bzero.c \
-		ft_memchr.c \
-		ft_memmove.c \
-		ft_mlst_revsort.c \
-		ft_mlst_sort.c \
-		ft_mlstnew.c \
-		ft_mlstpurge.c \
-		ft_mlstpush.c \
-		ft_printf.c \
-		ft_putchar_fd.c \
-		ft_putendl_fd.c \
-		ft_putstr_fd.c \
-		ft_strcmp.c \
-		ft_strcpy.c \
-		ft_strdel.c \
-		ft_strjoin.c \
-		ft_strlcat.c \
-		ft_strlen.c \
-		ft_strncmp.c \
-		ft_strncpy.c \
-		ft_strnew.c
 
 DIR_S = srcs
 DIR_H = includes
